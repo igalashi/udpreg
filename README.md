@@ -1,2 +1,2 @@
 # udpreg
-RBCP monitor for SiTCP
+A monitor for SiTCP UDP register space with RBCP
