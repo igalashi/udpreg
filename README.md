@@ -1,2 +1,2 @@
 # udpreg
-RBCP monitor
+RBCP monitor for SiTCP
