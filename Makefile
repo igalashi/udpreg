@@ -8,9 +8,13 @@ INCLUDES =
 LIBS =
 
 CXX = g++
+CXXFLAGS = -Wall -g -O
+
+CXX = g++
 CXXFLAGS = -Wall -g -O --std=c++0x
 
-all: udpreg copperlite rbcp rbcpload
+EXECS = udpreg copperlite rbcp rbcpload rbcpp
+all: $(EXECS)
 
 rbcpwin: rbcpWin.c rbcpWin.h rbcpWin_send.c myAtoi.c
 	$(CC) $(CFLAGS) -o $@ $(INCDLUES) \
@@ -36,8 +40,13 @@ rbcpload: rbcpload.cxx rbcp.o rbcp.h
 		rbcpload.cxx rbcp.o
 		$(LIBS)
 
+rbcpp: rbcp.cxx
+	$(CXX) $(CXXFLAGS) -o $@ $(INCLUDES) \
+		-DTEST_MAIN -DDEBUG rbcp.cxx \
+		$(LIBS)
+
 clean:
-	rm -f rbcpwin udpreg copperlite rbcp rbcpload
+	rm -f $(EXECS)
 	rm -f *.o
 
 .c.o:
